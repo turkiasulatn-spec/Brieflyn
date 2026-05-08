@@ -1,0 +1,53 @@
+<div class="page-wrap">
+    <div data-w-id="fae2fc50-e3be-07f8-adbf-4269591d7e78" data-animation="default" data-collapse="medium"
+        data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
+        <div class="nav-container">
+            <a href="/" aria-current="page" class="nav-logo w-nav-brand w--current" aria-label="home">
+                <img src="{{ url_for('static',filename='img/logo.png') }}" alt="logo" class="logo">
+            </a>
+            <nav role="navigation" class="nav-menu w-nav-menu">
+                <a href="{{ url_for('index') }}" aria-current="page" class="nav-link w-nav-link w--current">Home</a>
+                <a href="{{ url_for('index') }}" class="nav-link w-nav-link">About Us</a>
+                <a href="{{ url_for('login') }}" class="nav-link w-nav-link">Log in</a>
+                <a href="{{ url_for('register') }}" class="nav-link w-nav-link">Sign up</a>
+                <a href="https://github.com/MuhmdGad" class="nav-link w-nav-link">Github</a>
+                <div class="mob-button">
+                    <a href="{{ url_for('login') }}"
+                        class="primary-button-cover desktop w-inline-block">
+                        <div data-w-id="960c1b1a-b854-a98b-ccfd-07d890981ef8" class="primary-button">
+                          
+                            <div class="div-block">
+                                <div class="animate-text _1">Get Started</div>
+                                <div class="animate-text _2">Get Started</div>
+                            </div>
+                           
+                        </div>
+                    </a>
+                </div>
+            </nav>
+            <div class="desktop-buton">
+                <a href="{{ url_for('login') }}" class="primary-button-cover desktop w-inline-block">
+                    <div data-w-id="960c1b1a-b854-a98b-ccfd-07d890981ef8" class="primary-button">
+                        <div class="div-block">
+                            <div class="animate-text _1">Get Started</div>
+                            <div class="animate-text _2">Get Started</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="menu-button w-nav-button" aria-label="menu" role="button" tabindex="0"
+                aria-controls="w-nav-overlay-0" aria-haspopup="menu" aria-expanded="false">
+                <div class="burger-3">
+                    <div class="b3-top-wrap">
+                        <div class="b3-bar1"></div>
+                        <div class="b3-middlebar-base">
+                            <div class="b3-middlebar-top"></div>
+                            <div  class="b3-middlebar"></div>
+                        </div>
+                        <div class="b3-bar3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-nav-overlay"></div>
+    </div>
