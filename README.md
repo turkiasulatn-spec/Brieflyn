@@ -2,11 +2,8 @@
 
 # Brieflyn - Smart Personalized News Aggregator with AI Chat
 
-#### Video Demo: <URL HERE>
-#### GitHub Username: <YOUR_GITHUB_USERNAME>
-#### edX Username: <YOUR_EDX_USERNAME>
-#### City and Country: <YOUR_CITY, YOUR_COUNTRY>
-#### Date: <RECORDING_DATE>
+#### Video Demo: #
+#### GitHub Username: turkiasulatn-spec
 
 ---
 
