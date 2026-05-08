@@ -1,0 +1,315 @@
+{% extends "layouts/admin.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<header class="navbar navbar-dark sticky-top bn-bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
+    <h2 class="heading-xxl text-center">Brieflyn<span style="color: red;">.</span></h2>
+  </a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+    data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input class="form-control form-control-dark w-100" style="padding: 13px;" type="text"
+    placeholder="Search articles..." aria-label="Search" id="searchInput" onkeyup="searchArticles()">
+  <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="{{ url_for('logout') }}">Sign out</a>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid" style="margin-bottom: 23px;">
+  <div class="row">
+
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-home" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <p>Dashboard</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M20.965 7C20.8873 5.1277 20.6366 3.97975 19.8284 3.17157C18.6569 2 16.7712 2 13 2H11C7.22876 2 5.34315 2 4.17157 3.17157C3 4.34315 3 6.22876 3 10V14C3 17.7712 3 19.6569 4.17157 20.8284C5.34315 22 7.22876 22 11 22H13C16.7712 22 18.6569 22 19.8284 20.8284C21 19.6569 21 17.7712 21 14V11"
+                  stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+                <path
+                  d="M6 12C6 10.5858 6 9.87868 6.43934 9.43934C6.87868 9 7.58579 9 9 9H15C16.4142 9 17.1213 9 17.5607 9.43934C18 9.87868 18 10.5858 18 12V16C18 17.4142 18 18.1213 17.5607 18.5607C17.1213 19 16.4142 19 15 19H9C7.58579 19 6.87868 19 6.43934 18.5607C6 18.1213 6 17.4142 6 16V12Z"
+                  stroke="#fff" stroke-width="1.5" />
+                <path d="M7 6H12" stroke="#fff" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+              <p>My Feed</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 15 15" fill="none">
+                <path
+                  d="M7.5 5C6.67157 5 6 5.67157 6 6.5C6 7.32843 6.67157 8 7.5 8C8.32843 8 9 7.32843 9 6.5C9 5.67157 8.32843 5 7.5 5Z"
+                  stroke="#fff" />
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M8.99999 1.99988L8 1.99989V0H7V1.9999L5.99991 1.9999C2.68625 1.99993 9.17923e-06 4.68619 0 7.99985C-9.179e-06 11.3135 2.68627 13.9998 5.99996 13.9998H9.00004C9.13059 13.9998 9.26024 13.9957 9.38884 13.9874L13.3788 14.9849C13.5492 15.0275 13.7294 14.9776 13.8536 14.8534C13.9778 14.7292 14.0277 14.549 13.9851 14.3786L13.4081 12.0704C14.3958 11.0012 15 9.57071 15 7.99985C15 4.68614 12.3137 1.99985 8.99999 1.99988ZM5 6.5C5 5.11929 6.11929 4 7.5 4C8.88071 4 10 5.11929 10 6.5C10 7.88071 8.88071 9 7.5 9C6.11929 9 5 7.88071 5 6.5ZM7.49998 12C6.43628 12 5.45756 11.6303 4.68726 11.0128L5.31272 10.2326C5.91201 10.713 6.67179 11 7.49998 11C8.32816 11 9.08794 10.713 9.68723 10.2326L10.3127 11.0128C9.54239 11.6303 8.56367 12 7.49998 12Z"
+                  stroke="#fff" />
+              </svg>
+              <p> AI Assistant</p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-users" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <p>Interests</p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M19 19.2674V7.84496C19 5.64147 17.4253 3.74489 15.2391 3.31522C13.1006 2.89493 10.8994 2.89493 8.76089 3.31522C6.57467 3.74489 5 5.64147 5 7.84496V19.2674C5 20.6038 6.46752 21.4355 7.63416 20.7604L10.8211 18.9159C11.5492 18.4945 12.4508 18.4945 13.1789 18.9159L16.3658 20.7604C17.5325 21.4355 19 20.6038 19 19.2674Z"
+                  stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <p>Saved</p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M9.29664 4.72727V5.25342C6.60683 6.35644 4.7276 9.97935 4.79579 13.1192L4.79577 14.8631C3.4188 16.6333 3.49982 19.2727 6.93518 19.2727H9.29664C9.29664 19.996 9.57852 20.6897 10.0803 21.2012C10.582 21.7127 11.2625 22 11.9721 22C12.6817 22 13.3622 21.7127 13.8639 21.2012C14.3656 20.6897 14.6475 19.996 14.6475 19.2727H17.0155C20.4443 19.2727 20.494 16.6278 19.1172 14.8576L19.1555 13.1216C19.2248 9.97811 17.3419 6.35194 14.6475 5.25049V4.72727C14.6475 4.00395 14.3656 3.31026 13.8639 2.7988C13.3622 2.28734 12.6817 2 11.9721 2C11.2625 2 10.582 2.28734 10.0803 2.7988C9.57852 3.31026 9.29664 4.00395 9.29664 4.72727ZM12.8639 4.72727C12.8639 4.72727 12.8633 4.76414 12.8622 4.78246C12.5718 4.74603 12.2759 4.72727 11.9757 4.72727C11.673 4.72727 11.3747 4.74634 11.082 4.78335C11.0808 4.76474 11.0803 4.74603 11.0803 4.72727C11.0803 4.48617 11.1742 4.25494 11.3415 4.08445C11.5087 3.91396 11.7356 3.81818 11.9721 3.81818C12.2086 3.81818 12.4354 3.91396 12.6027 4.08445C12.7699 4.25494 12.8639 4.48617 12.8639 4.72727ZM11.0803 19.2727C11.0803 19.5138 11.1742 19.7451 11.3415 19.9156C11.5087 20.086 11.7356 20.1818 11.9721 20.1818C12.2086 20.1818 12.4354 20.086 12.6027 19.9156C12.7699 19.7451 12.8639 19.5138 12.8639 19.2727H11.0803ZM17.0155 17.4545C17.7774 17.4545 18.1884 16.5435 17.6926 15.9538C17.4516 15.6673 17.3233 15.3028 17.3316 14.9286L17.3723 13.0808C17.4404 9.99416 15.0044 6.54545 11.9757 6.54545C8.94765 6.54545 6.51196 9.99301 6.57898 13.0789L6.61916 14.9289C6.62729 15.303 6.49893 15.6674 6.25806 15.9538C5.76221 16.5435 6.17325 17.4545 6.93518 17.4545H17.0155ZM16.9799 3.20202C17.2945 2.74813 17.9176 2.63524 18.3715 2.94988C19.5192 3.74546 20.8956 5.65348 21.6471 7.9126C21.8214 8.43664 21.5379 9.00279 21.0139 9.17712C20.4898 9.35145 19.9237 9.06795 19.7493 8.5439C19.0892 6.55949 17.9221 5.07189 17.2321 4.59358C16.7782 4.27894 16.6653 3.65592 16.9799 3.20202ZM5.4303 2.94988C5.8842 2.63524 6.50722 2.74813 6.82185 3.20202C7.13649 3.65592 7.0236 4.27894 6.56971 4.59358C5.87969 5.07189 4.71256 6.55949 4.05242 8.5439C3.87809 9.06795 3.31194 9.35145 2.78789 9.17712C2.26384 9.00279 1.98034 8.43664 2.15467 7.9126C2.90619 5.65348 4.2826 3.74546 5.4303 2.94988Z"
+                  fill="#fff" />
+              </svg>
+              <p>Notifications</p>
+            </a>
+          </li>
+        </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>System Area</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-plus-circle" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="16"></line>
+              <line x1="8" y1="12" x2="16" y2="12"></line>
+            </svg>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M14.962 13.41c-.927.06-1.915.09-2.962.09-1.047 0-2.035-.03-2.962-.09.267 4.954 1.884 8.74 2.962 8.74 1.078 0 2.694-3.785 2.962-8.74zm-7.936-.188c.152 3.571.961 6.533 2.06 8.442C4.983 20.404 2 16.554 2 12v-.09c1.329.621 3.003 1.056 5.026 1.312zm-4.784-3.44c1.127.662 2.719 1.14 4.769 1.42.103-3.76.933-6.882 2.074-8.866C5.67 3.386 3.03 6.23 2.242 9.782zm6.765 1.622C9.129 6.057 10.864 1.85 12 1.85s2.871 4.207 2.993 9.554c-.925.064-1.923.096-2.993.096a43.67 43.67 0 0 1-2.993-.096zm7.967 1.818c2.023-.256 3.697-.69 5.026-1.311V12c0 4.554-2.984 8.404-7.085 9.664 1.098-1.91 1.907-4.871 2.06-8.442zm4.784-3.44c-1.127.662-2.719 1.14-4.769 1.42-.103-3.76-.933-6.882-2.074-8.866 3.415 1.05 6.055 3.894 6.843 7.446z"
+                  fill="#fff" />
+              </svg>
+              <p>Sources</p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M15 8H19V20H5V10H9V4H15V8ZM13 6H11V18H13V6ZM15 10V18H17V10H15ZM9 12V18H7V12H9Z" fill="#fff" />
+              </svg>
+              <p>Insights</p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M11 3H13C13.5523 3 14 3.44772 14 4V4.56879C14 4.99659 14.2871 5.36825 14.6822 5.53228C15.0775 5.69638 15.5377 5.63384 15.8403 5.33123L16.2426 4.92891C16.6331 4.53838 17.2663 4.53838 17.6568 4.92891L19.071 6.34312C19.4616 6.73365 19.4615 7.36681 19.071 7.75734L18.6688 8.1596C18.3661 8.46223 18.3036 8.92247 18.4677 9.31774C18.6317 9.71287 19.0034 10 19.4313 10L20 10C20.5523 10 21 10.4477 21 11V13C21 13.5523 20.5523 14 20 14H19.4312C19.0034 14 18.6318 14.2871 18.4677 14.6822C18.3036 15.0775 18.3661 15.5377 18.6688 15.8403L19.071 16.2426C19.4616 16.6331 19.4616 17.2663 19.071 17.6568L17.6568 19.071C17.2663 19.4616 16.6331 19.4616 16.2426 19.071L15.8403 18.6688C15.5377 18.3661 15.0775 18.3036 14.6822 18.4677C14.2871 18.6318 14 19.0034 14 19.4312V20C14 20.5523 13.5523 21 13 21H11C10.4477 21 10 20.5523 10 20V19.4313C10 19.0034 9.71287 18.6317 9.31774 18.4677C8.92247 18.3036 8.46223 18.3661 8.1596 18.6688L7.75732 19.071C7.36679 19.4616 6.73363 19.4616 6.34311 19.071L4.92889 17.6568C4.53837 17.2663 4.53837 16.6331 4.92889 16.2426L5.33123 15.8403C5.63384 15.5377 5.69638 15.0775 5.53228 14.6822C5.36825 14.2871 4.99659 14 4.56879 14H4C3.44772 14 3 13.5523 3 13V11C3 10.4477 3.44772 10 4 10L4.56877 10C4.99658 10 5.36825 9.71288 5.53229 9.31776C5.6964 8.9225 5.63386 8.46229 5.33123 8.15966L4.92891 7.75734C4.53838 7.36681 4.53838 6.73365 4.92891 6.34313L6.34312 4.92891C6.73365 4.53839 7.36681 4.53839 7.75734 4.92891L8.15966 5.33123C8.46228 5.63386 8.9225 5.6964 9.31776 5.53229C9.71288 5.36825 10 4.99658 10 4.56876V4C10 3.44772 10.4477 3 11 3Z"
+                  stroke="#fff" stroke-width="1.5" />
+                <path
+                  d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z"
+                  stroke="#fff" stroke-width="1.5" />
+              </svg>
+              <p>Settings</p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M6 3C4.34315 3 3 4.34315 3 6V18C3 19.6569 4.34315 21 6 21H17C17.5523 21 18 20.5523 18 20C18 19.4477 17.5523 19 17 19H6C5.44772 19 5 18.5523 5 18V6C5 5.44772 5.44772 5 6 5H17C17.5523 5 18 4.55228 18 4C18 3.44772 17.5523 3 17 3H6ZM15.7071 7.29289C15.3166 6.90237 14.6834 6.90237 14.2929 7.29289C13.9024 7.68342 13.9024 8.31658 14.2929 8.70711L16.5858 11H8C7.44772 11 7 11.4477 7 12C7 12.5523 7.44772 13 8 13H16.5858L14.2929 15.2929C13.9024 15.6834 13.9024 16.3166 14.2929 16.7071C14.6834 17.0976 15.3166 17.0976 15.7071 16.7071L19.7071 12.7071C20.0976 12.3166 20.0976 11.6834 19.7071 11.2929L15.7071 7.29289Z"
+                  fill="#fff" />
+              </svg>
+              <p>Sign out</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-4">
+      <div class="chartjs-size-monitor">
+        <div class="chartjs-size-monitor-expand">
+          <div class=""></div>
+        </div>
+        <div class="chartjs-size-monitor-shrink">
+          <div class=""></div>
+        </div>
+      </div>
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h2>Dashboard</h2>
+      </div>
+      <div class="features-card-wrap">
+        <div class="row" id="articlesContainer">
+
+          {% if error %}
+          <p style="color: red;">{{ error }}</p>
+          {% endif %}
+
+          {% for article in articles %}
+          <div class="col-lg-4 mt-4 article-card" data-title="{{ article.title|lower }}"
+            data-article-title="{{ article.title|e }}"
+            data-article-description="{{ article.description|e if article.description else article.title|e }}">
+            <div class="card features-card-wrap">
+              <div class="card-header">
+                <img src="{{ article.media_url }}" alt="img">
+              </div>
+              <div class="card-body text-white">
+                <h4>{{ article.title }}</h4>
+              </div>
+              <div class="card-footer d-flex justify-content-between">
+                <a href="{{ article.article_link }}">
+                  <button type="button" class="btn btn-primary btn-block mb-4">View Article</button>
+                </a>
+                <button type="button" class="btn btn-outline-light btn-block mb-4 chat-trigger-btn">Chat with
+                  Article</button>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+
+          {% if not articles and not error %}
+          <center>
+            <h3 class="text-white">There is no news at this time.</h3>
+          </center>
+          {% endif %}
+
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="chat-popup" id="chatPopup">
+  <div class="chat-popup-header">
+    <h6 id="chatArticleTitle">Article Chat</h6>
+    <button class="chat-popup-close" onclick="closeChatPopup()">&times;</button>
+  </div>
+  <div class="chat-popup-body" id="chatMessages">
+    <div class="chat-message article">
+      <strong>Article Summary:</strong>
+      <p id="articleSummary" style="margin: 5px 0 0 0;"></p>
+    </div>
+  </div>
+  <div class="chat-popup-input">
+    <input type="text" id="chatInput" placeholder="Ask about this article..."
+      onkeypress="if(event.key==='Enter') sendMessage()">
+  </div>
+</div>
+
+<script>
+  function searchArticles() {
+    var input = document.getElementById('searchInput');
+    var filter = input.value.toLowerCase();
+    var cards = document.getElementsByClassName('article-card');
+
+    for (var i = 0; i < cards.length; i++) {
+      var title = cards[i].getAttribute('data-title');
+      if (title.indexOf(filter) > -1) {
+        cards[i].style.display = "";
+      } else {
+        cards[i].style.display = "none";
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var chatButtons = document.querySelectorAll('.chat-trigger-btn');
+    chatButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        var card = this.closest('.article-card');
+        var title = card.getAttribute('data-article-title');
+        var description = card.getAttribute('data-article-description');
+        openChatPopup(title, description);
+      });
+    });
+  });
+
+  function openChatPopup(title, description) {
+    document.getElementById('chatPopup').style.display = 'block';
+    document.getElementById('chatArticleTitle').textContent = title;
+    document.getElementById('chatMessages').innerHTML = `
+    <div class="chat-message article">
+      <strong>${title}</strong>
+      <p style="margin: 5px 0 0 0;">${description}</p>
+    </div>
+  `;
+    document.getElementById('chatInput').value = '';
+  }
+
+  function closeChatPopup() {
+    document.getElementById('chatPopup').style.display = 'none';
+  }
+
+  function sendMessage() {
+    var input = document.getElementById('chatInput');
+    var message = input.value.trim();
+
+    if (message === '') return;
+
+    var chatMessages = document.getElementById('chatMessages');
+
+    var userMessageDiv = document.createElement('div');
+    userMessageDiv.className = 'chat-message user';
+    userMessageDiv.textContent = message;
+    chatMessages.appendChild(userMessageDiv);
+
+    var articleResponse = document.createElement('div');
+    articleResponse.className = 'chat-message article';
+    articleResponse.textContent = 'This is a simulated response about the article. Real AI integration can be added here.';
+    chatMessages.appendChild(articleResponse);
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    input.value = '';
+  }
+
+</script>
+
+{% endblock %}
