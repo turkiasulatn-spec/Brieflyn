@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %}
+
+<!-- Title -->
+{% block title %}Home Page{% endblock %}
+<!-- Title -->
+
+{% block content %}
+<section class="main-section">
+    <div class="container">
+        <div class="privacy-top-wrap">
+            <div class="badge-wrap">
+                <img src="{{ url_for('static',filename='img/effects/c_Arrow6-3.svg') }}" alt="arrow" class="arrow">
+                <div class="text-block-m">Home Page</div>
+                <img src="{{ url_for('static',filename='img/effects/c_Arrow5-3.svg') }}" alt="arrow" class="arrow">
+            </div>
+            <h1 class="heading-xl">Brieflyn<span style="color: red;">.</span></h1>
+            <h2>Less Noise. More Signal.</h2>
+            <p class="body-text-m">
+                With Brieflyn, all news that matters to you is perfectly organized and presented smartly for a smooth,
+                enjoyable reading experience.
+            </p>
+        </div>
+        <img src="{{ url_for('static',filename='img/effects/grid.avif') }}" alt="grid" class="image-8">
+
+    </div>
+   <!--  <img src="{{ url_for('static',filename='img/effects/light.avif') }}" alt="light" class="image-11"> -->
+</section><br><br><br><br><br><br>
+{% endblock %}
