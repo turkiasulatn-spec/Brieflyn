@@ -2,7 +2,7 @@
 
 # Brieflyn - Smart Personalized News Aggregator with AI Chat
 
-#### Video Demo: #
+#### Video Demo: https://youtu.be/lWgtOk5Ozo4
 #### GitHub Username: turkiasulatn-spec
 
 ---
